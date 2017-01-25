@@ -9,18 +9,12 @@ pass_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 fuz = fuzzer_class.WordBuild(pass_chars)
 NLG = Guldencoin()
 
-#def get_random_word():
-#    wordLen = random.randint(7, 8)
-#    word = ''
-#    for i in range(wordLen):
-#        word += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
-#    return word
-
 teller = 0
 starttime = time.time()
 
 while True:
-   password = fuz.build_word(counter)
+   fuz.cnt_increase()
+   password = fuz.build_word()
    if NLG.passwordtest(password):
       print("password is %s" % (password))
       exit()
