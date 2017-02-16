@@ -17,7 +17,7 @@ class WordBuild:
 
    def store_dict(self):
       with open('checkpoint.data', 'wb') as file_obj:
-         pickle.dump(self.cnt_dict, file_obj, pickle.DEFAULT_PROTOCOL)
+         pickle.dump(self.cnt_dict, file_obj, pickle.HIGHEST_PROTOCOL)
 
    def load_dict(self):
       try:
