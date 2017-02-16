@@ -3,7 +3,7 @@ from jsonrpc import ServiceProxy
 class Guldencoin:
    def __init__(self):
       # connect to the local guldencoin daemon.
-      self.access = ServiceProxy("http://rpcgebruiker:rpcwachtwoord@127.0.0.1:19332")
+      self.access = ServiceProxy("http://rpcuser:rpcpassword@127.0.0.1:9232")
 
    def passwordtest(self, password):
       try:
@@ -12,3 +12,6 @@ class Guldencoin:
          return(False)
       if res is None:
          return(True)
+
+   def make_test_wallet(self):
+      self.access.encryptwallet("Test")
