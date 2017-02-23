@@ -20,9 +20,15 @@ checkpoint_time = time.time() + 5*60
 while True:
    fuz.cnt_increase()
    password = fuz.build_word()
-   if NLG.passwordtest(password):
+   result = NLG.passwordtest(password):
+   if result is None:
+      print("Crypto daemon is not reachable. Does it run?")
+      print("Terminating.")
+      exit()
+   if result:
       print("password is %s" % (password))
       exit()
    if time.time() > checkpoint_time:
+      print("Saving progress now... Last tested password is: %s." % (password, ))
       checkpoint_time = checkpoint_time + 5*60
       fuz.store_dict()

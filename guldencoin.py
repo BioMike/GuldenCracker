@@ -1,4 +1,5 @@
 from jsonrpc import ServiceProxy
+import socket
 
 class Guldencoin:
    def __init__(self):
@@ -8,10 +9,15 @@ class Guldencoin:
    def passwordtest(self, password):
       try:
          res = self.access.walletpassphrase(password, 20)
-      except:
+      except socket.error as e:
+         print(type(e))
+         return(None)
+      except Exception as e:
          return(False)
       if res is None:
          return(True)
+      else:
+         return(None)
 
    def make_test_wallet(self):
       self.access.encryptwallet("Test")
